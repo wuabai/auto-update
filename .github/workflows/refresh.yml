@@ -2,7 +2,7 @@ name: Refresh Updated At
 
 on:
   schedule:
-    - cron: '0 2 * * *'   # 每天凌晨 2 点 UTC（你可自行更改时间）
+    - cron: '1 16 * * *'   # 每天凌晨 2 点 UTC（你可自行更改时间）
   workflow_dispatch:       # 允许手动触发
 
 jobs:
