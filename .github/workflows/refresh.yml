@@ -16,7 +16,7 @@ jobs:
       - name: Update README.md to refresh timestamp
         run: |
           echo "" >> README.md
-          git config user.name "wuabai"
+          git config user.name "github-actions[bot]"
           git config user.email "139797821+wuabai@users.noreply.github.com"
           git add README.md
           git commit -m "chore: refresh updated_at [skip ci]" || echo "No changes to commit"
