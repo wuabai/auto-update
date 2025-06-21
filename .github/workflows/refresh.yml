@@ -2,8 +2,8 @@ name: Refresh Updated At
 
 on:
   schedule:
-    - cron: '1 16 * * *'   # 每天北京时间凌晨 0.01 分 更新（你可自行更改时间）
-  workflow_dispatch:       # 允许手动触发
+    - cron: '1 16 * * *'   # 每天 UTC 16:01，即北京时间 00:01
+  workflow_dispatch:         # 支持手动触发
 
 jobs:
   refresh:
@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true   # 允许后续 git push 使用 GITHUB_TOKEN
 
       - name: Update README.md to refresh timestamp
         run: |
@@ -19,5 +21,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "139797821+wuabai@users.noreply.github.com"
           git add README.md
-          git commit -m "chore: refresh updated_at [skip ci]" || echo "No changes to commit"
+          git commit -m "chore: refresh updated_at [skip ci]" || echo "Nothing to commit"
           git push
